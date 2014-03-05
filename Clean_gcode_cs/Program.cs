@@ -42,7 +42,7 @@ namespace Clean_gcode_cs
             bool isVerbose = false;
 
             if (args.Length > 1 && args[1].Equals("--verbose", StringComparison.InvariantCultureIgnoreCase))
-                isVerbose = false;
+                isVerbose = true;
 
             LoadAndReWrite(args[0], isVerbose);
         }
