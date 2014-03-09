@@ -45,6 +45,8 @@ namespace Clean_gcode_cs
                 isVerbose = true;
 
             LoadAndReWrite(args[0], isVerbose);
+            Console.WriteLine("Press return to continue.");
+            Console.Read();
         }
 
         public static bool LoadAndReWrite(string infilename, bool isVerbose)
@@ -59,10 +61,10 @@ namespace Clean_gcode_cs
             try
             {
                 Console.WriteLine("Opening file: " + infilename);
-
                 using (TextReader infile = new StreamReader(File.OpenRead(infilename)))
                 {
                     Console.WriteLine("Writing file: " + outfilename);
+                    File.Delete(outfilename);
                     using (TextWriter outfile = new StreamWriter(File.OpenWrite(outfilename)))
                     {
                         rewrite(infile, outfile, isVerbose);
